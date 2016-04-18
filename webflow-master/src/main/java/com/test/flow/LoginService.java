@@ -1,9 +1,7 @@
 package com.test.flow;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,7 @@ public class LoginService{
 	
 	private Map<String, String> dataMap = new HashMap<String, String>(10);
 	
-	public String performLogin(LoginCredentials loginCredentials) throws IncorrectLoginCredentialsException {
+	public boolean performLogin(LoginCredentials loginCredentials) throws IncorrectLoginCredentialsException {
 		
 	/*	List<Object> li=dataMap.entrySet().stream().filter(e->
 			e.getValue().equals(loginCredentials.getLoginName())&& e.getKey().equals(loginCredentials.getPassword()))
@@ -27,7 +25,7 @@ public class LoginService{
 			throw new IncorrectLoginCredentialsException();
 		}*/
 		
-		return "success";
+		return true;
 	}
 	
 	public void createNewAccount(LoginCredentials loginCredentials) throws IncorrectLoginCredentialsException{

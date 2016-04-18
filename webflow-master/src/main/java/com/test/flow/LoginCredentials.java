@@ -1,6 +1,7 @@
 package com.test.flow;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class LoginCredentials implements Serializable{
  
@@ -9,6 +10,7 @@ public class LoginCredentials implements Serializable{
 	private String loginName;
 	private String password;
 	private String id;
+	private Date loginDate;
 	
 	public String getLoginName() {
 		return loginName;
@@ -27,6 +29,12 @@ public class LoginCredentials implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Date getLoginDate() {
+		return loginDate;
+	}
+	public void setLoginDate(Date loginDate) {
+		this.loginDate = loginDate;
 	}
  
 }

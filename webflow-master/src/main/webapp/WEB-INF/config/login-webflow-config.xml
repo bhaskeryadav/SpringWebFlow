@@ -12,9 +12,13 @@
 	<flow:flow-executor id="loginFlowExecutor" flow-registry="loginFlowRegistry"/>
 	 
 	<!-- Define the registry that holds references to all the flow related XML configuration-->
-	<flow:flow-registry id="loginFlowRegistry">
+	<flow:flow-registry id="loginFlowRegistry" flow-builder-services="fbs">
 		<flow:flow-location id="loginFlow" path="/WEB-INF/flows/login-flow.xml"/>
-		<flow:flow-location id="registerUser" path="/WEB-INF/flows/create-new-account-flow.xml"/>
+		<flow:flow-location id="registerUser" path="/WEB-INF/flows/create-new-account-flow.xml" />
 	</flow:flow-registry>
- 
+ 	
+ 	<flow:flow-builder-services id="fbs" conversion-service="conversService"/>
+ 	
+ 	<!-- we can add validator similarly  -->
+ 	
 </beans>

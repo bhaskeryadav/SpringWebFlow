@@ -2,7 +2,7 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
 	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
-      http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
+      http://www.springframework.org/schema/webflow/spring-webflow.xsd">
  
 	<var name="loginCredentials" class="com.test.flow.LoginCredentials"/>
  	
@@ -18,16 +18,20 @@
 		<transition on="loginCredentialsEntered" to="performLoginAction"/>
 		<transition on="createNewAccountRequested" to="createNewAccountSubFlowState"/>
 	</view-state>
+
+<decision-state id="performLoginAction">
+<if test="loginService.performLogin(loginCredentials)" then="displayLoginSuccessView" else="displayLoginErrorView"/>
+</decision-state> 
  
-	<action-state id="performLoginAction">
+<!-- 	<action-state id="performLoginAction">
 		<evaluate expression="loginService.performLogin(loginCredentials)"/>
-		 
+				 
 		<transition to="displayLoginSuccessView"/>
 		 
 		<transition on-exception="com.test.flow.IncorrectLoginCredentialsException"
 		to="displayLoginErrorView"/>
 	</action-state>
- 
+  -->
 	<view-state id="displayLoginSuccessView" view="/WEB-INF/views/display_login_success.jsp"/>
 	 
 	<view-state id="displayLoginErrorView" view="/WEB-INF/views/display_login_error.jsp"/>
@@ -35,5 +39,7 @@
 	<subflow-state id="createNewAccountSubFlowState" subflow="createNewAccountFlow">
 		<transition on="newAccountCreated" to="displayLoginView"/>
 	</subflow-state>
+	
+	
  
 </flow>

@@ -8,6 +8,9 @@
 	<var name="loginCredentials" class="com.test.flow.LoginCredentials"/>
 	 
 	<view-state id="createNewAccountView" view="/WEB-INF/views/create_new_account.jsp" model="loginCredentials">
+	<binder>
+		<binding property="loginDate" converter="std"/>
+	</binder>
 		<transition on="accountInformationEntered" to="createNewAccountAction"/>
 	</view-state>
 	 
